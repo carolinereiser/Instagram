@@ -19,15 +19,16 @@
     // Do any additional setup after loading the view.
     self.picture.file = self.post[@"image"];
     self.caption.text = self.post[@"caption"];
+    self.username.text = self.post[@"author"][@"username"];
     NSDate *createdAt = self.post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    formatter.dateFormat = @"E MMM d HH:mm:ss";
 
     NSString* dateString = [formatter stringFromDate:createdAt];
-    
 
-    NSLog(@"%@", dateString);
     self.timeStamp.text = dateString;
+    
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.post[@"likeCount"]];
 }
 
 /*

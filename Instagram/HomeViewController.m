@@ -6,6 +6,8 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+@import MBProgressHUD;
+
 #import "DetailsViewController.h"
 #import "HomeViewController.h"
 #import <Parse/Parse.h>
@@ -15,6 +17,7 @@
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray<Post *>* posts;
+@property (nonatomic) int postLimit;
 
 @end
 
@@ -25,6 +28,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     // Do any additional setup after loading the view.
+    
+    self.postLimit = 20;
     
     UIImage *img = [UIImage imageNamed:@"instagram-writing"];
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -46,20 +51,63 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 20;
+    query.limit = self.postLimit;
 
     // fetch data asynchronously
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             // do something with the array of object returned by the call
             self.posts = posts;
-            NSLog(@"%@", self.posts);
+            //NSLog(@"%@", self.posts);
             [self.tableView reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.isMoreDataLoading = false;
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
     [self.refreshControl endRefreshing];
+}
+
+- (void) fetchMorePosts{
+    self.postLimit += 20;
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    //is this right????
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    query.limit = self.postLimit;
+
+    // fetch data asynchronously
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.posts = posts;
+            //NSLog(@"%@", self.posts);
+            [self.tableView reloadData];
+            self.isMoreDataLoading = false;
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+     // Handle scroll behavior here
+    if(!self.isMoreDataLoading){
+       if(!self.isMoreDataLoading){
+           // Calculate the position of one screen length before the bottom of the results
+           int scrollViewContentHeight = self.tableView.contentSize.height;
+           int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+           
+           // When the user has scrolled past the threshold, start requesting
+           if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+               self.isMoreDataLoading = true;
+               [self fetchMorePosts];
+           }
+       }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

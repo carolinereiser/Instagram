@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingsViewController : UIViewController
 
+//+ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
+
 @end
 
 NS_ASSUME_NONNULL_END

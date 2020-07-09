@@ -6,11 +6,12 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "SettingsViewController.h"
 #import "StartPageViewController.h"
 
-@interface SettingsViewController ()
+@interface SettingsViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -26,6 +27,8 @@
     StartPageViewController *startPageViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = startPageViewController;
 }
+
+
 
 /*
 #pragma mark - Navigation

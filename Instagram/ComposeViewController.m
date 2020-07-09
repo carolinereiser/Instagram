@@ -5,6 +5,7 @@
 //  Created by Caroline Reiser on 7/7/20.
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
+@import MBProgressHUD;
 
 #import "ComposeViewController.h"
 #import <Parse/Parse.h>
@@ -24,9 +25,11 @@
 
 
 - (IBAction)post:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded)
         {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"Successfully posted!");
             [self performSegueWithIdentifier:@"returnHome" sender:nil];
         }

@@ -24,7 +24,22 @@
     
     self.caption.text = post[@"caption"];
     
+    self.username.text = post[@"author"][@"username"];
+    
+    NSDate *createdAt = post.createdAt;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss";
+
+    NSString* dateString = [formatter stringFromDate:createdAt];
+    
+    self.timeStamp.text = [NSString stringWithFormat:@"Posted on %@", dateString];
+    
+    self.likeCount.text = [NSString stringWithFormat:@"%@", post[@"likeCount"]];
+    
     [self.caption sizeToFit];
+}
+- (IBAction)pressedLike:(id)sender {
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
