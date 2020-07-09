@@ -23,7 +23,7 @@
 - (IBAction)logOut:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.parentViewController.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    StartPageViewController *startPageViewController = [storyboard instantiateViewControllerWithIdentifier:@"StartPageViewController"];
+    StartPageViewController *startPageViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = startPageViewController;
 }
 

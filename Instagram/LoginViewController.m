@@ -22,6 +22,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)onTap:(id)sender {
+     [self.view endEditing:YES];
+}
 - (IBAction)logIn:(id)sender {
     if([self validFields])
        {

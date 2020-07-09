@@ -17,12 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -31,8 +25,8 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    self.picture.image = [self resizeImage:editedImage withSize:(CGSizeMake)(500,500)];
-    
+    //self.picture.image = [self resizeImage:editedImage withSize:(CGSizeMake)(500,500)];
+    self.picture.image = editedImage;
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -49,6 +43,33 @@
     
     return newImage;
 }
+- (IBAction)cameraClicked:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+
+}
+
+- (IBAction)photoRollClicked:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
 
 
 #pragma mark - Navigation
