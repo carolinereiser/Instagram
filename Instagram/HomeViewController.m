@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import "Post.h"
 #import "PostCell.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -115,6 +116,7 @@
     PostCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     Post* myPost = self.posts[indexPath.row];
     cell.button.tag = indexPath.row;
+    cell.profileButton.tag = indexPath.row;
     [cell setPost:myPost];
     
     return cell;
@@ -139,6 +141,13 @@
         DetailsViewController *detailsViewController = [segue destinationViewController];
         Post *post = self.posts[tappedButton.tag];
         detailsViewController.post = post;
+    }
+    else if([[segue identifier] isEqualToString:@"profileSegue"])
+    {
+        UIButton *tappedButton = sender;
+         ProfileViewController *profileViewController = [segue destinationViewController];
+         PFUser *user = self.posts[tappedButton.tag][@"author"];
+         profileViewController.user = user;
     }
 }
 

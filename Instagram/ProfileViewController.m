@@ -28,13 +28,21 @@
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+        
+    if(!self.user)
+    {
+        self.user = [PFUser currentUser];
+    }
+    self.username.text = self.user.username;
     
-    self.username.text = [PFUser currentUser].username;
+    self.profilePic.file = self.user[@"profilePic"];
+    [self.profilePic loadInBackground];
     
     self.postLimit = 20;
     
     [self fetchUserPosts];
     
+    self.collectionView.frame = self.view.frame;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
         
     layout.minimumInteritemSpacing = 2;
@@ -51,7 +59,8 @@
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
-    [query whereKey:@"author" equalTo:[PFUser currentUser]];
+    [query whereKey:@"author" equalTo:self.user];
+    [query includeKey:@"author"];
     query.limit = self.postLimit;
 
     // fetch data asynchronously

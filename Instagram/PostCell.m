@@ -26,6 +26,9 @@
     
     self.username.text = post[@"author"][@"username"];
     
+    self.profilePic.file = post[@"author"][@"profilePic"];
+    [self.profilePic loadInBackground];
+    
     NSDate *createdAt = post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss";

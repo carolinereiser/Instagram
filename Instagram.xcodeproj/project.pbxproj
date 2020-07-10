@@ -17,6 +17,8 @@
 		5889474924B41382007E3BD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5889474824B41382007E3BD7 /* main.m */; };
 		5889475324B41382007E3BD7 /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5889475224B41382007E3BD7 /* InstagramTests.m */; };
 		5889475E24B41382007E3BD7 /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5889475D24B41382007E3BD7 /* InstagramUITests.m */; };
+		58A33E6B24B91F6900A40188 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E6A24B91F6900A40188 /* CommentsViewController.m */; };
+		58A33E6E24B923D200A40188 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E6D24B923D200A40188 /* CommentCell.m */; };
 		58EDEB2824B65C18001AA9CA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EDEB1924B65C16001AA9CA /* SettingsViewController.m */; };
 		58EDEB2924B65C18001AA9CA /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EDEB1F24B65C17001AA9CA /* ComposeViewController.m */; };
 		58EDEB2A24B65C18001AA9CA /* StartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EDEB1D24B65C17001AA9CA /* StartPageViewController.m */; };
@@ -70,6 +72,10 @@
 		5889475924B41382007E3BD7 /* InstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5889475D24B41382007E3BD7 /* InstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITests.m; sourceTree = "<group>"; };
 		5889475F24B41382007E3BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58A33E6924B91F6900A40188 /* CommentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		58A33E6A24B91F6900A40188 /* CommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		58A33E6C24B923D200A40188 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		58A33E6D24B923D200A40188 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		58EDEB1824B65C16001AA9CA /* PictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureViewController.m; sourceTree = "<group>"; };
 		58EDEB1924B65C16001AA9CA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		58EDEB1A24B65C16001AA9CA /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -210,6 +216,10 @@
 				58EDEB3724B66D91001AA9CA /* ProfileViewController.m */,
 				58EDEB3C24B7B4D0001AA9CA /* ProfileCell.h */,
 				58EDEB3D24B7B4D0001AA9CA /* ProfileCell.m */,
+				58A33E6924B91F6900A40188 /* CommentsViewController.h */,
+				58A33E6A24B91F6900A40188 /* CommentsViewController.m */,
+				58A33E6C24B923D200A40188 /* CommentCell.h */,
+				58A33E6D24B923D200A40188 /* CommentCell.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -478,12 +488,14 @@
 				58EDEB3824B66D91001AA9CA /* ProfileViewController.m in Sources */,
 				58EDEB2924B65C18001AA9CA /* ComposeViewController.m in Sources */,
 				58EDEB2E24B65C18001AA9CA /* LoginViewController.m in Sources */,
+				58A33E6B24B91F6900A40188 /* CommentsViewController.m in Sources */,
 				58EDEB2B24B65C18001AA9CA /* DetailsViewController.m in Sources */,
 				58EDEB2D24B65C18001AA9CA /* HomeViewController.m in Sources */,
 				58EDEB3224B65C22001AA9CA /* Post.m in Sources */,
 				58EDEB2C24B65C18001AA9CA /* PictureViewController.m in Sources */,
 				58EDEB2A24B65C18001AA9CA /* StartPageViewController.m in Sources */,
 				58EDEB2F24B65C18001AA9CA /* SignUpViewController.m in Sources */,
+				58A33E6E24B923D200A40188 /* CommentCell.m in Sources */,
 				58EDEB2824B65C18001AA9CA /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
