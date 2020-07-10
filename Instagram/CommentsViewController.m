@@ -53,6 +53,9 @@
         }
     }];
 }
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (IBAction)sendComment:(id)sender {
     if([self.comment.text isKindOfClass:[NSString class]])

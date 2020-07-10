@@ -43,6 +43,7 @@
     
     return newImage;
 }
+/*
 - (IBAction)cameraClicked:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -59,7 +60,7 @@
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 
-}
+} */
 
 - (IBAction)photoRollClicked:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
