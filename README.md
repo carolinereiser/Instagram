@@ -42,7 +42,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/3iX4WXf.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/1gCMLbh" data-context="false" ><a href="//imgur.com/a/1gCMLbh">Video Walkthrough</a></blockquote>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
